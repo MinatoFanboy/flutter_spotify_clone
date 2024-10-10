@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spotify_clone/presentation/auth/pages/signup_or_signin.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:flutter_spotify_clone/common/widgets/button/basic_app_button.dart';
@@ -47,7 +48,7 @@ class ChooseModePage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        context.read<ThemeCubit>().updateTheme(ThemeMode.light);
+                        context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
                       },
                       child: Column(
                         children: [
@@ -86,7 +87,7 @@ class ChooseModePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
+                        context.read<ThemeCubit>().updateTheme(ThemeMode.light);
                       },
                       child: Column(
                         children: [
@@ -125,7 +126,15 @@ class ChooseModePage extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                BasicAppButton(onPressed: () {}, title: 'Continue'),
+                BasicAppButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const SignupOrSigninPage()));
+                    },
+                    title: 'Continue'),
               ],
             ),
           ),
